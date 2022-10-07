@@ -1,1 +1,316 @@
-/* Desenvolva sua estilização aqui... */
+body {
+    margin: 0 auto;
+    background-image: url(../../assets/img/header-bg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    margin: 0 auto;
+}
+
+.header-box {
+    padding: 10rem 6.25rem;
+}
+
+.header-box-title {
+    color: var(--color-grey-6);
+    font-size: var(--title-4);
+    font-weight: var(--font-weight-2);
+    margin-bottom: 3.75rem;
+}
+
+.header-box-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 3.75rem;
+}
+
+.header-box-description-title {
+    font-size: var(--title-1);
+    font-weight: var(--font-weight-1);
+    line-height: var(--line-height-1);
+    color: var(--color-grey-3);
+    margin-bottom: 3.75rem;
+}
+
+.header-box-description-p-1 {
+    font-size: var(--text-1);
+    font-weight: var(--font-weight-3);
+    line-height: var(--line-height-6);
+    color: var(--color-grey-5);
+}
+
+.header-box-description-p-2 {
+    font-size: var(--text-1);
+    font-weight: var(--font-weight-1);
+    line-height: var(--line-height-6);
+    color: var(--color-grey-5);
+    margin-bottom: 3.75rem;
+}
+
+.main-container {
+    margin: 0 auto;
+    padding-top: 2.8125rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-div {
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+}
+
+.main-container-title {
+    font-size: var(--title-4);
+    font-weight: var(--font-weight-1);
+    line-height: var(--line-height-4);
+    color: var(--color-grey-1);
+    margin-bottom: 3.375rem;
+}
+
+.cards {
+    width: 53.625rem;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-default);
+}
+
+.card {
+    width: 51.125rem;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-grey-6);
+    padding: 2.375rem;
+    border-radius: var(--radius-default);
+}
+
+.card-title {
+    font-size: var(--title-4);
+    font-weight: var(--font-weight-1);
+    line-height: var(--line-height-4);
+    color: var(--color-grey-1);
+    margin-bottom: 1.125rem;
+}
+
+.company-city {
+    margin-bottom: 1.125rem;
+}
+
+.card-company {
+    font-size: var(--text-3);
+    font-weight: var(--font-weight-3);
+    line-height: var(--line-height-8);
+    color: var(--color-grey-2);
+    margin-right: 2rem;
+    margin-bottom: 1.75rem;
+}
+
+.card-city {
+    font-size: var(--text-3);
+    font-weight: var(--font-weight-3);
+    line-height: var(--line-height-8);
+    color: var(--color-grey-2);
+}
+
+.card-description {
+    font-size: var(--text-2);
+    font-weight: var(--font-weight-3);
+    line-height: var(--line-height-5);
+    color: var(--color-grey-2);
+    margin-bottom: 1.75rem;
+}
+
+.card-type-button {
+    min-height: var(--button-height-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.card-type-of-work {
+    font-size: var(--text-3);
+    font-weight: var(--font-weight-3);
+    line-height: var(--line-height-buttons);
+    color: var(--color-grey-2);
+    padding: 0 0.75rem;
+    background-color: var(--color-grey-3);
+    height: 1.875rem;
+    border: none;
+    border-radius: var(--radius-default);
+}
+
+.aside-header {
+    width: 100%;
+    max-width: 90vw;
+    min-height: 6.0625rem;;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2rem;
+    background-color: var(--color-grey-6);
+    border-radius: var(--radius-default) var(--radius-default) 0 0;
+    position: sticky;
+    top: 2rem;
+    right: 0;
+}
+
+.aside-header h2 {
+    font-size: var(--title-4);
+    font-weight: var(--font-weight-1);
+    line-height: var(--line-height-4);
+    color: var(--color-grey-1);
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+.no-cards-selected {
+    width: 31.4375rem;
+    max-width: 90vw;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 13.6875rem;
+    padding: 2rem;
+    position: sticky;
+    top: 8.0625rem;
+    right: 0;
+
+}
+
+.div-span-placeholder {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.span-placeholder-1, .span-placeholder-2, .span-placeholder-3, .span-placeholder-4, .span-placeholder-5 {
+    height: 1rem;
+    background-color: var(--color-grey-5);
+    border-radius: var(--radius-default);
+}
+
+.span-placeholder-1 {
+    width: 9.3125rem;
+}
+
+.span-placeholder-2 {
+    width: 16.6875rem;
+}
+
+.span-placeholder-3, .span-placeholder-4 {
+    width: 6.4375rem;
+}
+
+.span-placeholder-5 {
+    width: 2.8125rem;
+}
+
+.cards-selected {
+    display: flex;
+    flex-direction: column;
+    gap: 0.0625rem;
+    position: sticky;
+    top: 8.0625rem;
+    right: 0;
+}
+
+.card-selected {
+    width: 100%;
+    max-width: 90vw;
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 1.75rem;
+    background-color: var(--color-grey-6);
+}
+
+.card-selected-header {
+    width: 100%;
+    min-height: 3.375rem;
+    display: flex;
+    gap: 1.625rem;
+}
+
+.card-selected-header h3 {
+    font-size: var(--title-5);
+    font-weight: var(--font-weight-1);
+    line-height: var(--line-height-4);
+    color: var(--color-grey-1);
+}
+
+.card-selected span {
+    font-size: var(--text-3);
+    font-weight: var(--font-weight-3);
+    line-height: var(--line-height-8);
+    color: var(--color-grey-2);
+    margin-right: 2rem;
+}
+
+@media(max-width: 991px){
+    :root {
+      --title-1: calc(3rem / 1.2);
+      --title-2: calc(2.5rem / 1.2);
+      --title-3: calc(2rem / 1.2);
+      --text-1:  calc(1.125rem / 1.2);
+    }
+    .container {
+      width: 28rem;
+    }
+    .container-header {
+      max-width: 100%;
+    }
+    .header-box {
+      padding: 10rem 1rem;
+    }
+    .card-type-button {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 2rem;
+    }
+    .card-type-of-work {
+      align-self: flex-start;
+    }
+    .button-2 {
+      width: 100%;
+    }
+    .main-div {
+      flex-direction: column;
+    }
+    aside {
+      max-width: 90%;
+    }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

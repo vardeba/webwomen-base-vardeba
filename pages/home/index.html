@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/globalStyles.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/globalStyles.css">
+    <link rel="stylesheet" href="../../styles/containers.css">
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <title>Webwomen</title>
     <meta
       name="description"
@@ -16,8 +18,72 @@
     />
 </head>
 <body>
-    <main></main>
-    <script src="jobsData.js"></script>
-    <script src="index.js"></script>
+  <div class="container"></div>
+  <header class="container-header">
+    <div class="header-box">
+      <h1 class="header-box-title">Webwomen</h1>
+      <div class="header-box-description">
+        <h2 class="header-box-description-title">Lugar de mulher é onde ela quiser!</h2>
+        <p class="header-box-description-p-1">Está procurando oportunidades de estágio, emprego ou bolsas de estudo?</p> 
+        <p class="header-box-description-p-1">Ou até mesmo oportunidades para atender eventos de tecnologia no Brasil e ao redor do mundo?</p>
+        <p class="header-box-description-p-2">Confere aqui embaixo o que temos pra você!</p>
+      </div>
+      <a href="#vagas">
+        <button class="button-1">Ir para seção vagas</button>
+      </a>
+    </div>
+  </header>
+  <main>
+    <div class="main-container container">
+      <h2 id="vagas" class="main-container-title">Vagas</h2>
+      <div class="main-div">
+        <section>
+          <ul class="cards">
+            <li class="card">
+              <h3 class="card-title">Pessoa desenvolvedora front-end - React JS</h3>
+              <div class="company-city">
+                <span class="card-company">Kenzie Academy</span>
+                <span class="card-city">Curitiba</span>
+              </div>
+              <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates incidunt aperiam, cupiditate dolores animi aspernatur dolore atque ea sapiente nulla dolorem.</p>
+              <div class="card-type-button">
+                <button class="card-type-of-work">Presencial</button>
+                <button class="button-2">Candidatar</button>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <aside>
+          <div class="aside-header">
+            <h2>Vagas selecionadas</h2>
+          </div>
+          <div class="no-cards-selected hide">
+            <p>Você ainda não aplicou para nenhuma vaga</p>
+            <span class="span-placeholder-1"></span>
+            <span class="span-placeholder-2"></span>
+            <div class="div-span-placeholder">
+              <span class="span-placeholder-3"></span>
+              <span class="span-placeholder-4"></span>
+              <span class="span-placeholder-5"></span>
+            </div>
+          </div>
+          <ul class="cards-selected">
+            <li class="card-selected">
+              <div class="card-selected-header">
+                <h3>Pessoa desenvolvedora front-end - React JS</h3>
+                <button class="trash-button"></button>
+              </div>
+              <div>
+                <span>Kenzie Academy</span>
+                <span>Curitiba</span>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <script src="./jobsData.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>
