@@ -2,36 +2,9 @@ const tagUlCards = document.querySelector('.cards');
 
 const tagUlCardsSelected = document.querySelector('.cards-selected');
 
-let applyList = [
-    {
-        id: 0,
-        title: "Pessoa desenvolvedora front-end - React",
-        enterprise: "Kenzie",
-        location: "Curitiba",
-        descrition:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        modalities: ["Hibrido", "Presencial"],
-      },
-      {
-        id: 1,
-        title: "Pessoa desenvolvedora back-end - Node JS",
-        enterprise: "Brazilians in Tech",
-        location: "Rio de Janeiro",
-        descrition:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        modalities: ["Home Office", "Presencial"],
-      },
-      {
-        id: 2,
-        title: "Pessoa desenvolvedora Fullstack - Node JS",
-        enterprise: "Brazilians in Tech",
-        location: "Rio de Janeiro",
-        descrition:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        modalities: ["Home Office", "Presencial"],
-      },
-    
-];
+const noCardsSelected = document.querySelector('.no-cards-selected');
+
+let applyList = [];
 
 function showCards(array, htmlReference){
     array.forEach(card => {
@@ -51,9 +24,106 @@ function showApplyedCards(array, htmlReference){
     });
 }
 
-showCards(jobsData, tagUlCards);
+function listRefresh(){
+  if (applyList.length > 0){
+    noCardsSelected.classList.add('hide');
+    noCardsSelected.classList.remove('show');
+    showApplyedCards(applyList, tagUlCardsSelected);
+  }else{
+    noCardsSelected.classList.remove('hide');
+    noCardsSelected.classList.add('show');
+  }
+}
 
-showApplyedCards(applyList, tagUlCardsSelected);
+function applyToJob(){
+  const applyButton = document.querySelectorAll('.btn-add');
+  console.log(applyButton);
+  applyButton.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      if (event.target.innerText = "Candidatar"){
+        let jobToShow = jobsData.find((job) => job.id == event.target.id);
+        console.log(jobToShow);
+        event.target.innerText = "Remover candidatura";
+        event.target.classList.toggle('btn-add');
+        event.target.classList.toggle('btn-del');
+        applyList.push(jobToShow);
+        tagUlCardsSelected.innerHTML = "";
+        listRefresh();
+        removeFromApplyList();
+        const arrayJson = JSON.stringify(applyList);
+        localStorage.setItem("jobList", arrayJson);
+
+      }
+    })
+  })
+
+}
+
+function removeFromApplyList(){
+  const removeButton = document.querySelectorAll('.btn-del');
+  console.log(removeButton);
+  removeButton.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      if (event.target.innerText = "Remover candidatura"){
+        let jobsToRemove = applyList.filter((job) => job.id != event.target.id);
+        console.log(jobsToRemove);
+        event.target.innerText = "Candidatar";
+        event.target.classList.toggle('btn-add');
+        event.target.classList.toggle('btn-del');
+        applyList = [...jobsToRemove];
+        tagUlCardsSelected.innerHTML = "";
+        listRefresh();
+        const arrayJson2 = JSON.stringify(applyList);
+        localStorage.setItem("jobList", arrayJson2);
+
+      }
+    })
+  })
+}
+
+function getDataFromLocalstorage(){
+  const localStorageDataJSON = localStorage.getItem('jobList');
+  if (localStorageDataJSON){
+      const localStorageData = JSON.parse(localStorageDataJSON);
+      applyList = [...localStorageData];
+      listRefresh();
+  }
+}
+
+// function applyToJob(){
+//   let newApplyList = [];
+//   const applyButton = document.querySelectorAll('.button-2');
+//   console.log(applyButton);
+//   applyButton.forEach((button) => {
+//     button.addEventListener('click', (event) => {
+//       let jobToShow = jobsData.find((job) => job.id == event.target.id);
+//       console.log(jobToShow);
+//       event.target.innerText = "Remover candidatura";
+//       applyList.push(jobToShow);
+//       tagUlCardsSelected.innerHTML = "";
+//       listRefresh();
+//     })
+//   })
+// }
+
+function allFunctions(){
+  showCards(jobsData, tagUlCards);
+
+  showApplyedCards(applyList, tagUlCardsSelected);
+  
+  listRefresh();
+  
+  applyToJob();
+  
+  removeFromApplyList();
+
+  getDataFromLocalstorage()
+}
+
+allFunctions();
+
+
+
 
 
 

@@ -36,7 +36,7 @@ function createCard(card){
     tagButtonCardType.innerText = `${modalities[0]}`;
 
     const tagButtonCardApply = document.createElement('button');
-    tagButtonCardApply.classList.add('button-2');
+    tagButtonCardApply.classList = 'btn-add button-2';
     tagButtonCardApply.setAttribute('id', `${id}`);
     tagButtonCardApply.innerText = "Candidatar";
 
@@ -63,7 +63,7 @@ function createApplyedCard(card){
     tagH3CardSelected.innerText = `${title}`;
 
     const tagButtonCardSelected = document.createElement('button');
-    tagButtonCardSelected.classList.add('trash-button');
+    tagButtonCardSelected.classList = 'btn-trash-del trash-button';
     tagButtonCardSelected.setAttribute('id', `${id}`);
 
     const tagDivCardSelectedCompanyCity = document.createElement('div');
