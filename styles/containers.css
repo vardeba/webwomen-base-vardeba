@@ -1,16 +1,18 @@
 .container {
     width: 87.5rem;
-    max-width: 90%;
+    max-width: 90vw;
   
 }
 
 .container-header {
     width: 68.75rem;
+    max-width: 90vw;
 }
   
 main {
     margin: 0 auto;
     background-color: var(--color-grey-4);
+    width: 100%;
 }
 
 aside {

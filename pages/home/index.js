@@ -13,7 +13,8 @@ function showCards(array, htmlReference){
         htmlReference.appendChild(cardReady);
         
     });
-}
+    listRefresh();
+};
 
 function showApplyedCards(array, htmlReference){
     array.forEach(card => {
@@ -22,64 +23,20 @@ function showApplyedCards(array, htmlReference){
         htmlReference.appendChild(cardApplyedReady);
         
     });
-}
+};
 
 function listRefresh(){
   if (applyList.length > 0){
     noCardsSelected.classList.add('hide');
     noCardsSelected.classList.remove('show');
     showApplyedCards(applyList, tagUlCardsSelected);
+    jobAlreadyApplyed();
+    removeTrashButton();
   }else{
     noCardsSelected.classList.remove('hide');
     noCardsSelected.classList.add('show');
-  }
-}
-
-function applyToJob(){
-  const applyButton = document.querySelectorAll('.btn-add');
-  console.log(applyButton);
-  applyButton.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      if (event.target.innerText = "Candidatar"){
-        let jobToShow = jobsData.find((job) => job.id == event.target.id);
-        console.log(jobToShow);
-        event.target.innerText = "Remover candidatura";
-        event.target.classList.toggle('btn-add');
-        event.target.classList.toggle('btn-del');
-        applyList.push(jobToShow);
-        tagUlCardsSelected.innerHTML = "";
-        listRefresh();
-        removeFromApplyList();
-        const arrayJson = JSON.stringify(applyList);
-        localStorage.setItem("jobList", arrayJson);
-
-      }
-    })
-  })
-
-}
-
-function removeFromApplyList(){
-  const removeButton = document.querySelectorAll('.btn-del');
-  console.log(removeButton);
-  removeButton.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      if (event.target.innerText = "Remover candidatura"){
-        let jobsToRemove = applyList.filter((job) => job.id != event.target.id);
-        console.log(jobsToRemove);
-        event.target.innerText = "Candidatar";
-        event.target.classList.toggle('btn-add');
-        event.target.classList.toggle('btn-del');
-        applyList = [...jobsToRemove];
-        tagUlCardsSelected.innerHTML = "";
-        listRefresh();
-        const arrayJson2 = JSON.stringify(applyList);
-        localStorage.setItem("jobList", arrayJson2);
-
-      }
-    })
-  })
-}
+  };
+};
 
 function getDataFromLocalstorage(){
   const localStorageDataJSON = localStorage.getItem('jobList');
@@ -87,63 +44,83 @@ function getDataFromLocalstorage(){
       const localStorageData = JSON.parse(localStorageDataJSON);
       applyList = [...localStorageData];
       listRefresh();
-  }
-}
+  };
+};
 
-// function applyToJob(){
-//   let newApplyList = [];
-//   const applyButton = document.querySelectorAll('.button-2');
-//   console.log(applyButton);
-//   applyButton.forEach((button) => {
-//     button.addEventListener('click', (event) => {
-//       let jobToShow = jobsData.find((job) => job.id == event.target.id);
-//       console.log(jobToShow);
-//       event.target.innerText = "Remover candidatura";
-//       applyList.push(jobToShow);
-//       tagUlCardsSelected.innerHTML = "";
-//       listRefresh();
-//     })
-//   })
-// }
+function addAndRemoveFromList(){
+  const applyButton = document.querySelectorAll('.btn-add');
+  applyButton.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      if (event.target.innerText === "Candidatar"){
+        let jobToShow = jobsData.find((job) => job.id == event.target.id);
+        event.target.innerText = "Remover candidatura";
+        applyList = [...applyList, jobToShow];
+        tagUlCardsSelected.innerHTML = "";
+        listRefresh();
+        jobAlreadyApplyed();
+        removeTrashButton();
 
-function allFunctions(){
-  showCards(jobsData, tagUlCards);
+        const arrayJson = JSON.stringify(applyList);
+        localStorage.setItem("jobList", arrayJson);
 
-  showApplyedCards(applyList, tagUlCardsSelected);
-  
-  listRefresh();
-  
-  applyToJob();
-  
-  removeFromApplyList();
+      }else{
+        let newList = applyList.filter((job) => job.id != event.target.id);
+        event.target.innerText = "Candidatar";
+        applyList = [...newList];
+        tagUlCardsSelected.innerHTML = "";
+        listRefresh();
+        jobAlreadyApplyed()
+        removeTrashButton()
 
-  getDataFromLocalstorage()
-}
+        const arrayJson2 = JSON.stringify(applyList);
+        localStorage.setItem("jobList", arrayJson2);
 
-allFunctions();
+      };
+    });
+  });
+};
 
+function jobAlreadyApplyed(){
+  const btnAdd = document.querySelectorAll('.btn-add');
+  btnAdd.forEach((btn) => {
+    let jobOnList = applyList.findIndex(element => element.id == btn.id);
+    if (jobOnList < 0){
+      btn.innerText = "Candidatar";
+    }else{
+      btn.innerText = "Remover candidatura";
+    };
+  });
+};
 
+function removeTrashButton(){
+  if (applyList.length > 0){
+    const trashButton = document.querySelectorAll('.btn-trash-del');
+    trashButton.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        let newList = applyList.filter((job) => job.id != event.target.id);
+        applyList = [...newList];
+        tagUlCardsSelected.innerHTML = "";
+        listRefresh();
+        jobAlreadyApplyed();
 
+        const arrayJson3 = JSON.stringify(applyList);
+        localStorage.setItem("jobList", arrayJson3);
 
+      });
+    });
+  };
+};
 
+showCards(jobsData, tagUlCards);
 
+showApplyedCards(applyList, tagUlCardsSelected)
 
+listRefresh();
 
+addAndRemoveFromList();
 
+getDataFromLocalstorage();
 
+jobAlreadyApplyed();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+removeTrashButton();

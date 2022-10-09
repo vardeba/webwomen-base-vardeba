@@ -60,6 +60,8 @@ header {
 }
 
 .main-div {
+    width: 100%;
+    max-width: 90vw;
     margin: 0 auto;
     display: flex;
     gap: 2rem;
@@ -73,9 +75,12 @@ header {
     margin-bottom: 3.375rem;
 }
 
+.section-ul-cards {
+    max-width: 90vw;
+}
+
 .cards {
-    width: 53.625rem;
-    max-width: 90%;
+    max-width: 90vw;
     display: flex;
     flex-direction: column;
     gap: var(--gap-default);
@@ -269,6 +274,9 @@ header {
       --title-3: calc(2rem / 1.2);
       --text-1:  calc(1.125rem / 1.2);
     }
+    body {
+        background-size: none;
+    }
     .container {
       width: 28rem;
     }
@@ -293,7 +301,7 @@ header {
       flex-direction: column;
     }
     aside {
-      max-width: 90%;
+      max-width: 90vw;
     }
   
 }
